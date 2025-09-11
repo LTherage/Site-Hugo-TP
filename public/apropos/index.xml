@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Apropos on Portfolio de Ludovic Thérage</title>
+    <link>http://localhost:1313/apropos/</link>
+    <description>Recent content in Apropos on Portfolio de Ludovic Thérage</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 15 Apr 2025 13:13:47 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/apropos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Apropos</title>
+      <link>http://localhost:1313/apropos/apropos/</link>
+      <pubDate>Tue, 15 Apr 2025 13:13:47 +0200</pubDate>
+      <guid>http://localhost:1313/apropos/apropos/</guid>
+      <description>Dans cette page, nous vous proposerons une bibliographie constituée d&amp;rsquo;un relevé chronologique des expériences professionnelles et formations suivies.&#xA;Formations Vous pouvez consulter mon portfolio complet en téléchargeant le fichier PDF ci-dessous :&#xA;📄 Télécharger mon portfolio (PDF)&#xA;Ce document contient l&amp;rsquo;ensemble de mes formations, expériences professionnelles et projets réalisés.</description>
+    </item>
+  </channel>
+</rss>

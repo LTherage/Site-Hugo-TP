@@ -1,0 +1,14 @@
+{{ define "main" }}
+
+<h2>{{.Title}}</h2>
+<img src="{{ .Params.image }}" alt="{{ .Params.texte_alt }}">
+<h3>Langage Utilisés</h3>
+
+<ul>
+    {{ range .Params.languages }}
+    <li>{{ . }}</li>
+    {{ end }}
+</ul>
+{{.Content}}
+
+{{ end }}

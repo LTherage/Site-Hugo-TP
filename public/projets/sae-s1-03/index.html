@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr-fr" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>SAÉ S1.03 - Comparaison d&#39;approches algorithmiques (Partie 2) | Portfolio de Ludovic Thérage</title>
+
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Portfolio de Ludovic Thérage</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/apropos/"> À propos</a>
+    </li>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/projets/">Projects</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+
+<h2>SAÉ S1.03 - Comparaison d&#39;approches algorithmiques (Partie 2)</h2>
+<img src="https://fakeimg.pl/640x150/b319b3/ebe2e2&amp;text=SAE&#43;S1.05-06" alt="Image de SAÉ S1.03">
+<h3>Langage Utilisés</h3>
+
+<ul>
+    
+    <li>Java</li>
+    
+    <li>Algorithmique</li>
+    
+    <li>Tri</li>
+    
+</ul>
+<h1 id="saé-s102---comparaison-dapproches-algorithmiques-partie-2">SAÉ S1.02 - Comparaison d&rsquo;approches algorithmiques (Partie 2)</h1>
+<p><em>22 janvier 2025 - IUT de Lens</em></p>
+<h2 id="résumé-du-projet">Résumé du Projet</h2>
+<p>Implementation et comparaison de différents algorithmes de tri sur des tableaux de coordonnées GPS au format DMS (Degrés, Minutes, Secondes).</p>
+<h3 id="objectif">Objectif</h3>
+<p>Programmer et comparer l&rsquo;efficacité de différents algorithmes de tri sur des tableaux de coordonnées GPS au format DMS (Degrés, Minutes, Secondes).</p>
+<h3 id="algorithmes-à-implémenter">Algorithmes à Implémenter</h3>
+<ul>
+<li>Tri par fusion (récursif)</li>
+<li>Tri rapide (récursif)</li>
+<li>Tri à bulles bidirectionnel</li>
+<li>Le meilleur algorithme de la partie 1 (adapté)</li>
+</ul>
+<h3 id="structure-de-données">Structure de Données</h3>
+<ul>
+<li>Tableaux 2D de taille n×3 (n lignes, 3 colonnes pour DMS)</li>
+<li>Tri par ordre croissant : degrés → minutes → secondes</li>
+</ul>
+<h3 id="tests-et-évaluation">Tests et Évaluation</h3>
+<ul>
+<li>Tailles de tableaux : 10000, 20000, 30000, 50000, 70000</li>
+<li>10 tests par algorithme et taille</li>
+<li>Mesures : temps min, max et moyen</li>
+</ul>
+<h3 id="conditions-techniques">Conditions Techniques</h3>
+<ul>
+<li>Programmation en Java</li>
+<li>Génération aléatoire des données depuis sourceData.txt</li>
+<li>Documentation complète du code (spécifications, paramètres, commentaires)</li>
+</ul>
+<h3 id="livrables">Livrables</h3>
+<ul>
+<li>Code source commenté</li>
+<li>Rapport PDF (2-3 pages) incluant :
+<ul>
+<li>Résumé du travail</li>
+<li>Répartition des tâches</li>
+<li>Tableaux comparatifs des résultats</li>
+<li>Difficultés rencontrées</li>
+<li>Conclusion</li>
+</ul>
+</li>
+</ul>
+<h3 id="notation">Notation</h3>
+<ul>
+<li>Partie 1 (novembre 2024) : 40%</li>
+<li>Partie 2 (janvier 2025) : 60%</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TriBullesBidirectionnel</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * Tri à bulles bidirectionnel pour un tableau de coordonnées DMS
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @param tableau Tableau 2D où chaque ligne contient [degrés, minutes, secondes]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">trier</span>(<span style="color:#66d9ef">int</span><span style="color:#f92672">[][]</span> tableau) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">boolean</span> echange;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> debut <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> fin <span style="color:#f92672">=</span> tableau.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">do</span> {
+</span></span><span style="display:flex;"><span>            echange <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Phase aller (gauche vers droite)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> debut; i <span style="color:#f92672">&lt;</span> fin; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (comparer(tableau<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>, tableau<span style="color:#f92672">[</span>i <span style="color:#f92672">+</span> 1<span style="color:#f92672">]</span>) <span style="color:#f92672">&gt;</span> 0) {
+</span></span><span style="display:flex;"><span>                    echanger(tableau, i, i <span style="color:#f92672">+</span> 1);
+</span></span><span style="display:flex;"><span>                    echange <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>echange) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            echange <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>            fin<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Phase retour (droite vers gauche)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> fin <span style="color:#f92672">-</span> 1; i <span style="color:#f92672">&gt;=</span> debut; i<span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (comparer(tableau<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>, tableau<span style="color:#f92672">[</span>i <span style="color:#f92672">+</span> 1<span style="color:#f92672">]</span>) <span style="color:#f92672">&gt;</span> 0) {
+</span></span><span style="display:flex;"><span>                    echanger(tableau, i, i <span style="color:#f92672">+</span> 1);
+</span></span><span style="display:flex;"><span>                    echange <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            debut<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">while</span> (echange <span style="color:#f92672">&amp;&amp;</span> debut <span style="color:#f92672">&lt;</span> fin);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * Compare deux coordonnées DMS
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @param coord1 Première coordonnée [degrés, minutes, secondes]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @param coord2 Seconde coordonnée [degrés, minutes, secondes]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @return -1 si coord1 &lt; coord2, 0 si égaux, 1 si coord1 &gt; coord2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">comparer</span>(<span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> coord1, <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> coord2) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Comparaison des degrés</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (coord1<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">!=</span> coord2<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> coord1<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">-</span> coord2<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Si degrés égaux, comparaison des minutes</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (coord1<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">!=</span> coord2<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> coord1<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">-</span> coord2<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Si minutes égales, comparaison des secondes</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> coord1<span style="color:#f92672">[</span>2<span style="color:#f92672">]</span> <span style="color:#f92672">-</span> coord2<span style="color:#f92672">[</span>2<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * Échange deux éléments dans le tableau
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @param tableau Tableau de coordonnées
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @param i Index du premier élément
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @param j Index du second élément
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">echanger</span>(<span style="color:#66d9ef">int</span><span style="color:#f92672">[][]</span> tableau, <span style="color:#66d9ef">int</span> i, <span style="color:#66d9ef">int</span> j) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> temp <span style="color:#f92672">=</span> tableau<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>        tableau<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> tableau<span style="color:#f92672">[</span>j<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>        tableau<span style="color:#f92672">[</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> temp;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * Exemple d&#39;utilisation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Exemple de tableau de coordonnées DMS</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span><span style="color:#f92672">[][]</span> coordonnees <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>            {54, 2, 23},
+</span></span><span style="display:flex;"><span>            {25, 33, 23},
+</span></span><span style="display:flex;"><span>            {4, 14, 5},
+</span></span><span style="display:flex;"><span>            {31, 26, 47},
+</span></span><span style="display:flex;"><span>            {0, 32, 37},
+</span></span><span style="display:flex;"><span>            {8, 14, 52},
+</span></span><span style="display:flex;"><span>            {25, 14, 36},
+</span></span><span style="display:flex;"><span>            {47, 17, 14},
+</span></span><span style="display:flex;"><span>            {14, 59, 48},
+</span></span><span style="display:flex;"><span>            {53, 29, 9}
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Avant le tri :&#34;</span>);
+</span></span><span style="display:flex;"><span>        afficherTableau(coordonnees);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        trier(coordonnees);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;\nAprès le tri :&#34;</span>);
+</span></span><span style="display:flex;"><span>        afficherTableau(coordonnees);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * Affiche le tableau de coordonnées
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @param tableau Tableau à afficher
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">afficherTableau</span>(<span style="color:#66d9ef">int</span><span style="color:#f92672">[][]</span> tableau) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> coords : tableau) {
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;(%d° %d&#39; %d\&#34;) %n&#34;</span>, 
+</span></span><span style="display:flex;"><span>                            coords<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>, coords<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>, coords<span style="color:#f92672">[</span>2<span style="color:#f92672">]</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+
+
+  </main>
+  <footer>
+    <p>Copyright 2025. All rights reserved.</p>
+
+  </footer>
+</div>
+</body>
+</html>

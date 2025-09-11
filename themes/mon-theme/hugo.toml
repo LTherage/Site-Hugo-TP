@@ -1,0 +1,39 @@
+baseURL = 'https://example.org/'
+languageCode = 'fr-fr'
+title = 'Portfolio de Ludovic Thérage'
+theme = "mon-theme"
+
+[params]
+author = "Ludovic Thérage"
+description = "Portfolio de Ludovic Thérage, développeur web et mobile"
+keywords = ["portfolio", "hugo", "site statique"]
+
+[[menus.main]]
+name = 'Home'
+pageRef = '/'
+weight = 30
+
+[[menus.main]]
+name = 'Posts'
+pageRef = '/posts'
+weight = 30
+
+[[menus.main]]
+name = 'Tags'
+pageRef = '/tags'
+weight = 30
+
+[[menus.main]]
+name = 'Projects'
+pageRef = '/projets'
+weight = 30
+
+[[menus.main]]
+name = ' À propos'
+pageRef = '/apropos'
+weight = 30
+
+[module]
+  [module.hugoVersion]
+    extended = false
+    min = "0.116.0"
